@@ -3,17 +3,26 @@
     <h2>
        Si ya tienes una cuenta, comienza a disfrutar...
     </h2>
+    <div class="mt-4">
     <form @submit.prevent ='login'>
-      <input type="npmtext" placeholder="Correo electrónico" v-model="email"><br>
-      <input type="password" placeholder="Contraseña" v-model="password"><br>
+      <div class="form-group">
+      <input class="form-control" type="email" placeholder="Correo electrónico" v-model="email" required><br>
+      </div>
+      <div class="form-group">
+      <input class="form-control" type="password" placeholder="Contraseña" v-model="password" required><br>
+      </div>
       <button type="submit" class="btn btn-secondary btn-sm">Iniciar Sesión</button><br>
-       <p class="content-divider text-center mt-4">
+    </form>
+      <p class="content-divider text-center mt-4">
         <span>Ingresa con: </span>
        </p>
+    </div>
+       <p class="mt-4 text-center">
       <button class="btn btn-danger" @click="google">
-        <i class="fab fa-google-plus-square"></i>
-      </button><br>
-    </form>
+         <i class="fab fa-google"></i>
+      </button>
+       </p>
+      <br>
     <h3 class="mt-4 text-black lead text-center">
        Ingresa y haz tuya está comunidad
       <i class="fas fa-grin-squint"></i>

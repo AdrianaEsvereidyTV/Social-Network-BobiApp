@@ -1,12 +1,18 @@
 <template>
 <div class="register">
+  <div class="mt-4">
    <form @submit.prevent="register">
      <h1>Crea una nueva cuenta</h1>
-        <input type="email" v-model="email" placeholder="correo electrónico">
-        <input type="password" v-model="password" placeholder="contraseña">
+        <div class="form-group">
+      <input class="form-control" type="email" placeholder="Correo electrónico" v-model="email" required><br>
+      </div>
+      <div class="form-group">
+      <input class="form-control" type="password" placeholder="Contraseña" v-model="password" required><br>
+      </div>
         <button class="btn btn-secondary btn-sm">Registrar</button>
 
     </form>
+  </div>
 </div>
 </template>
 
