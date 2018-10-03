@@ -1,10 +1,10 @@
 <template>
 <div class="register">
    <form @submit.prevent="register">
-     <h1>Registrate</h1>
-        <input type="email" v-model="email" placeholder="e-mail">
+     <h1>Crea una nueva cuenta</h1>
+        <input type="email" v-model="email" placeholder="correo electrónico">
         <input type="password" v-model="password" placeholder="contraseña">
-        <button class="btn btn-info">Registrarme</button>
+        <button class="btn btn-secondary btn-sm">Registrar</button>
 
     </form>
 </div>
@@ -26,7 +26,7 @@ export default {
       firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
       .then(user => this.$router.replace('login'), {
        }).catch ((error) => {
-         alert('Ooops' + error.message)
+         alert('Lo sentimos, el registro ha fallado', error.message)
             });
         }
     }
