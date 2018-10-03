@@ -1,39 +1,44 @@
 <template>
-    <div>
-      <form @submit.prevent="register">
-        <h2> Registro</h2>
-        <input type="text" v-model="email" placeholder="Ingresa un email"><br>
-        <input type="password" v-model="password" placeholder="Ingresa un password"><br>
-        <button @click="register">Registrarse</button>
-        <h3><router-link to="/login">Inicia sesión</router-link></h3>
-        </form>
-    </div>
+<div class="register">
+   <form @submit.prevent="register">
+     <h1>Registrate</h1>
+        <input type="email" v-model="email" placeholder="e-mail">
+        <input type="password" v-model="password" placeholder="contraseña">
+        <button class="btn btn-info">Registrarme</button>
+
+    </form>
+</div>
 </template>
 
+
 <script>
-import firebase from "firebase";
+import firebase from 'firebase'
 export default {
-  data() {
+  name: 'register',
+  data () {
     return {
-      email: "",
-      password: ""
-    };
+      email:'',
+      password:''
+    }
   },
   methods: {
-    register() {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
-        .then(user => this.$router.replace("login"), {
-        })
-        .catch(error => {
-            console.log(error + error.message);
-          alert("Ooops" + error.message);
-        });
+    register () {
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+      .then(user => this.$router.replace('login'), {
+       }).catch ((error) => {
+         alert('Ooops' + error.message)
+            });
+        }
     }
-  }
-};
+}
+</script>
 
-<style scoped>
 
+<style  scoped>
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 </style>

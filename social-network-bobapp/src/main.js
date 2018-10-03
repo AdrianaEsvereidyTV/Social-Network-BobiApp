@@ -10,19 +10,19 @@ const router = new VueRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {
-  let usuario = firebase.auth().currentUser;
-  console.log(usuario);
-  let autorizacion = to.matched.some(record => record.meta.autentificado);
+//router.beforeEach((to, from, next) => {
+  //let usuario = firebase.auth().currentUser;
+  //console.log(usuario);
+  //let autorizacion = to.matched.some(record => record.meta.autentificado);
 
-  if (autorizacion && !usuario) {
-    netx("login");
-  } else if (!autorizacion && usuario) {
-    next("wall");
-  } else {
-    next();
-  }
-});
+  //if (autorizacion && !usuario) {
+    //netx("login");
+  //} else if (!autorizacion && usuario) {
+    //next("wall");
+  //} else {
+    //next();
+  //}
+//});
 
 new Vue({
   router,

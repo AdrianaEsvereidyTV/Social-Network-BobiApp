@@ -10,9 +10,9 @@
       <button type="submit" class="btn-google"></button><br>
     </form>
     <h3 class="mt-4 text-black lead text-center">
-       Ingresa y haz tuya está comunidadcd
+       Ingresa y haz tuya está comunidad
       <i class="fas fa-grin-squint"></i>
-       <router-link to="/register">¡Registrate!</router-link>
+       <router-link to="/register">¡Regístrate!</router-link>
      </h3>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
         .signInWithEmailAndPassword(this.usuario, this.password)
         .then(
           user => this.$router.replace("wall"),
-          error => alert("Oops" + error.message)
+          error => alert("Usuario inexistente" + error.message)
         );
     },
   }
