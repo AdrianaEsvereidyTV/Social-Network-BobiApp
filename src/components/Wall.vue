@@ -10,24 +10,22 @@
           </button>
         </form>
 </nav>
-<b-col  offset-sm="2" sm = "8"  >
 
-          <b-form-textarea  class="mt-4" v-model="post" placeholder="Postea tu rola" :rows="4"  @keyup.enter="addPost">
+          <b-form-textarea  class="mt-4" v-model="post" placeholder="Postea tu rola" :rows="4">
                     </b-form-textarea>
-            <button class="btn btn-danger" id="btn-publication" @click='addPost'>Publicar</button>
+            <button class="btn btn-dark" @click='addPost'>Publicar</button>
 
         <ul>
             <li v-for='(postName,key) in posted' :key="key">
                {{postName.name}}
 
-            <input type="text" v-model="editForm[key]" class="form-control">
-                <button class="btn btn-info" @click="editPost(key)" ><i class="fas fa-edit"></i>Editar</button>
-                 <button class="btn btn-danger" @click='deletePost(key)'><i class="fas fa-trash-alt"></i>Eliminar</button>
+            <input type="text" v-model="editPost[key]" class="form-control">
+                <b-button class="btn btn-info" @click="editPost(key)" ><i class="fas fa-pencil-alt"></i> Editar</b-button>
+                 <b-button class="btn btn-danger" @click='deletePost(key)'><i class="fas fa-trash"></i> Eliminar</b-button>
 
             </li>
         </ul>
 
-          </b-col >
 
     </div>
 </template>
@@ -78,16 +76,16 @@ export default {
         .ref("posted/" + key)
         .remove();
     },
+    },
     created() {
       firebase
         .database()
         .ref("posted")
-        .on("value", snapshot => {
+        .on("value", (snapshot) => {
           this.posted = snapshot.val();
         });
     }
-  }
-};
+  };
 </script>
 
 <style scoped>
