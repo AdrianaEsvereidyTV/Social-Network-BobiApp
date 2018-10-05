@@ -1,42 +1,46 @@
 <template>
-<div class="register">
-  <div class="mt-4">
-   <form @submit.prevent="register">
-     <h1>Crea una nueva cuenta</h1>
+ <div>
+    <center>
+    <img src="http://img.fenixzone.net/i/85DRokL.png" class="mx-auto d-block img-fluid">
+    </center>
+   <div class="mt-4">
+     <form @submit.prevent="register">
+       <h1>Crea una nueva cuenta</h1>
         <div class="form-group">
-      <input class="form-control" type="email" placeholder="Correo electrónico" v-model="email" required><br>
-      </div>
-      <div class="form-group">
-      <input class="form-control" type="password" placeholder="Contraseña" v-model="password" required><br>
-      </div>
-        <button class="btn btn-secondary btn-sm">Registrar</button>
-
-    </form>
+         <input class="form-control" type="email" placeholder="Correo electrónico" v-model="email" required><br>
+        </div>
+        <div class="form-group">
+         <input class="form-control" type="password" placeholder="Contraseña" v-model="password" required><br>
+        </div>
+          <button class="btn btn-secondary btn-sm">Registrar</button>
+     </form>
+   </div>
   </div>
-</div>
 </template>
 
 
 <script>
-import firebase from 'firebase'
+import firebase from "firebase";
 export default {
-  name: 'register',
-  data () {
+  name: "register",
+  data() {
     return {
-      email:'',
-      password:''
-    }
+      email: "",
+      password: ""
+    };
   },
   methods: {
-    register () {
-      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-      .then(user => this.$router.replace('login'), {
-       }).catch ((error) => {
-         alert('Lo sentimos, el registro ha fallado', error.message)
-            });
-        }
+    register() {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.email, this.password)
+        .then(user => this.$router.replace("wall"), {})
+        .catch(error => {
+          alert("Lo sentimos, el registro ha fallado", error.message);
+        });
     }
-}
+  }
+};
 </script>
 
 

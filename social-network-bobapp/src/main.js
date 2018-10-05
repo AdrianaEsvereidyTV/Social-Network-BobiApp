@@ -3,26 +3,15 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import routes from './router/index'
 import firebase from 'firebase'
+import BootstrapVue from 'bootstrap-vue'
 
 Vue.use(VueRouter);
+Vue.use(BootstrapVue);
 
 const router = new VueRouter({
   routes
 });
 
-//router.beforeEach((to, from, next) => {
-  //let usuario = firebase.auth().currentUser;
-  //console.log(usuario);
-  //let autorizacion = to.matched.some(record => record.meta.autentificado);
-
-  //if (autorizacion && !usuario) {
-    //netx("login");
-  //} else if (!autorizacion && usuario) {
-    //next("wall");
-  //} else {
-    //next();
-  //}
-//});
 
 new Vue({
   router,
@@ -40,3 +29,5 @@ const config = {
   messagingSenderId: "845363159362"
 };
 firebase.initializeApp(config);
+
+window.firebase = firebase; 
