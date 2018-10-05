@@ -1,7 +1,7 @@
 <template>
     <div>
-        <nav class="navbar navbar-dark bg-dar"k>
-        <img src="http://img.fenixzone.net/i/85DRokL.png" width="50" height="50" class="d-inline-block align-top"
+        <nav class="navbar navbar-dark bg-dar">
+        <img src="http://img.fenixzone.net/i/85DRokL.png" width="50" height="50" class="inline-block align-top"
           alt="">
         <a class="navbar-brand">Rola una rola...</a>
         <form class="form-inline">
@@ -12,12 +12,12 @@
 </nav>
 <b-col  offset-sm="2" sm = "8"  >
 
-          <b-form-textarea  class="mt-4" id="textarea2" v-model="post" placeholder="Escribe tu publicación" :rows="4" >
+          <b-form-textarea  class="mt-4" v-model="post" placeholder="Postea tu rola" :rows="4"  @keyup.enter="addPost">
                     </b-form-textarea>
             <button class="btn btn-danger" id="btn-publication" @click='addPost'>Publicar</button>
 
         <ul>
-            <li v-for='(postName,key) in posted' :key="postName">
+            <li v-for='(postName,key) in posted' :key="key">
                {{postName.name}}
 
             <input type="text" v-model="editForm[key]" class="form-control">
@@ -83,7 +83,7 @@ export default {
         .database()
         .ref("posted")
         .on("value", snapshot => {
-          this.publications = snapshot.val();
+          this.posted = snapshot.val();
         });
     }
   }
